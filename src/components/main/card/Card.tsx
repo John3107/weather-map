@@ -1,17 +1,19 @@
 import React from 'react';
 import './Card.css';
 import {Paper} from "@material-ui/core";
-import {CityType} from "../../../types/types";
 
+type PropsType = {
+    name: string
+}
 
-const Card = (props: CityType) => {
+const Card = (props: PropsType) => {
 
-    const { title } = props
+    const { name } = props
 
     return (
         <div className="Card">
             <Paper elevation={3} className="Paper">
-                <span>{title}</span>
+                <span>{name}</span>
             </Paper>
         </div>
     );

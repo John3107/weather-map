@@ -1,4 +1,50 @@
-.Add Button {
+.App {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input{
+    white-space: nowrap;
+}
+
+.input Button {
     margin-left: 10px;
     height: 55px;
+}
+
+.context {
+    width: 223px;
+    position: absolute;
+    left: 0;
+    top: 56px;
+}
+
+.city {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #c7c3c3;
+    padding: 5px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.cityRightSide{
+    display: flex;
+    text-align: right;
+}
+
+.cityRightSide :first-of-type {
+    margin-right: 5px;
+}
+
+.city:hover{
+    background: #303f9f;
+    color: #fff;
+    cursor: pointer;
+}
+
+:last-of-type {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

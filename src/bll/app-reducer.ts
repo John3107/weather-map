@@ -3,29 +3,49 @@ import {AppThunk} from "./store";
 import {weatherAPI} from "../api/api";
 
 const initialState: InitialStateType = {
-      cities: []
+    cities: [],
+    citiesContext: []
 }
 
 export const appReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
-        case 'GET-CITIES':
-            return {...state, cities: action.citiesArray}
+        case 'CITIES':
+            return {...state, cities: [...state.cities, action.city]}
+        case 'CITIES-CONTEXT':
+            return {...state, citiesContext: action.citiesContextArray}
         default:
             return state
     }
 }
 
-export const getCitiesTC = (): AppThunk => (dispatch) => {
+export const initialCitiesDataTC = (): AppThunk => (dispatch) => {
     const getCities = localStorage.getItem('cities-list')
-    if(getCities){
+    if (getCities) {
         dispatch(setCitiesAC(JSON.parse(getCities)))
     }
 }
 
-export const setCitiesTC = (title: string): AppThunk => (dispatch) => {
-    weatherAPI.getCityWeather(title)
+export const addCityTC = (newCity: CityType): AppThunk => (dispatch) => {
+    dispatch(setCitiesContextAC([]))
+    weatherAPI.getCityWeather(newCity.lat, newCity.lon)
         .then((res) => {
             console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    // const getCities = localStorage.getItem('cities-list')
+    // if (getCities) {
+    //     dispatch(setCitiesAC(JSON.parse(getCities)))
+    // }
+}
+
+export const setCitiesTC = (title: string): AppThunk => (dispatch) => {
+    if (!title) return dispatch(setCitiesContextAC([]))
+    weatherAPI.getCitiesWeather(title)
+        .then((res) => {
+            console.log(res.data)
+            dispatch(setCitiesContextAC(res.data))
         })
         .catch((err) => {
             console.log(err)
@@ -42,12 +62,16 @@ export const setCitiesTC = (title: string): AppThunk => (dispatch) => {
     // }
 }
 
-export const setCitiesAC = (citiesArray: CityType[]) => ({type: 'GET-CITIES', citiesArray} as const)
+export const setCitiesAC = (city: CityType) => ({type: 'CITIES', city} as const)
+export const setCitiesContextAC = (citiesContextArray: CityType[]) =>
+    ({type: 'CITIES-CONTEXT', citiesContextArray} as const)
 
 export type setCitiesActionType = ReturnType<typeof setCitiesAC>
+export type setCitiesContextActionType = ReturnType<typeof setCitiesContextAC>
 
 export type InitialStateType = {
-    cities: CityType[]
+    cities: CityType[],
+    citiesContext: CityType[]
 }
 
-type ActionsType = setCitiesActionType
+type ActionsType = setCitiesActionType | setCitiesContextActionType
