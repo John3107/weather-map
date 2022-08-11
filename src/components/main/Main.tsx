@@ -1,53 +1,50 @@
 import React, {useEffect, useState} from 'react';
 import './Main.css';
-import {Button, TextField} from "@material-ui/core";
+import {TextField} from "@material-ui/core";
 import Card from "./card/Card";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
-import {addCityTC, setCitiesTC} from "../../bll/app-reducer";
+import {addCityTC, citiesContextTC} from "../../bll/app-reducer";
 import {CityType} from "../../types/types";
+import {Clear} from '@material-ui/icons';
 
 const Main = () => {
 
     const data = useAppSelector()
     const dispatch = useAppDispatch()
     const [enteredTitle, setEnteredTitle] = useState<string>('')
-    const [selectedTitle, setSelectedTitle] = useState<string>('')
 
     useEffect(() => {
-        dispatch(setCitiesTC(enteredTitle))
-    }, [enteredTitle])
+        dispatch(citiesContextTC(enteredTitle))
+    }, [enteredTitle, dispatch])
 
-    const addCityHandler = () => {
-        if (!enteredTitle) {
-            alert('Enter city title!')
-            return
-        }
-        // dispatch(setCitiesTC(title))
-        // setTitle('')
+    const selectCityHandler = (selectedCity: CityType) => {
+        setEnteredTitle('')
+        dispatch(addCityTC(selectedCity))
     }
 
-    const selectCityHandler = (selectedTitle: CityType) => {
-        setSelectedTitle(selectedTitle.name)
-        dispatch(addCityTC(selectedTitle))
+    const onBlurHandler = () => {
+        setTimeout(() => dispatch(citiesContextTC('')), 100)
     }
 
     return (
         <div>
             <div className="Add">
                 <div className="input">
-                    <TextField id="outlined-basic"
+                    <TextField className="textField"
                                label="Enter city name"
                                variant="outlined"
                                onChange={(enteredTitle) => setEnteredTitle(enteredTitle.target.value)}
-                               value={selectedTitle ? selectedTitle : enteredTitle}
+                               onBlur={onBlurHandler}
+                               value={enteredTitle}
                     />
-                    <Button variant="contained" color="primary" onClick={addCityHandler}>Add</Button>
+                    <Clear className="clear-icon" onClick={() => setEnteredTitle('')}/>
                 </div>
                 <div className="context">
                     {
                         data.citiesContext.map((el, i) => {
                             return (
-                                <div className="city" key={i} onClick={() => selectCityHandler(el)}>
+                                <div className="city" key={i} onClick={() => selectCityHandler(el)}
+                                     id="context-menu">
                                     <span>{el.name}</span>
                                     <div className="cityRightSide">
                                         <div>{el.state}</div>
@@ -59,7 +56,7 @@ const Main = () => {
                 </div>
             </div>
             <div className="Cards">{
-                data.cities.map((el, i) => <Card name={el.name} key={i}/>)
+                data.cities.map((el) => <Card {...el} key={el.id}/>)
             }</div>
         </div>
     );

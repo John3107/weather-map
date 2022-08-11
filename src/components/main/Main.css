@@ -4,17 +4,25 @@
     position: relative;
 }
 
-.input{
+.input {
     white-space: nowrap;
+    position: relative;
 }
 
-.input Button {
-    margin-left: 10px;
-    height: 55px;
+.textField{
+    width: 100%;
+}
+
+.clear-icon {
+    position: absolute;
+    color: blue;
+    cursor: pointer;
+    top: 16px;
+    right: 10px;
 }
 
 .context {
-    width: 223px;
+    width: 100%;
     position: absolute;
     left: 0;
     top: 56px;
@@ -29,7 +37,7 @@
     font-size: 14px;
 }
 
-.cityRightSide{
+.cityRightSide {
     display: flex;
     text-align: right;
 }
@@ -38,7 +46,7 @@
     margin-right: 5px;
 }
 
-.city:hover{
+.city:hover {
     background: #303f9f;
     color: #fff;
     cursor: pointer;

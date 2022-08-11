@@ -6,3 +6,14 @@ export type CityType = {
     name: string
     state?: string
 }
+
+export type CityWeatherType = {
+    city: string,
+    country: string | undefined,
+    temp: number,
+    description: string,
+    icon: string,
+    id: string,
+    lat: number,
+    lon: number
+}

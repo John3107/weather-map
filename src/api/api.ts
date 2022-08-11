@@ -12,6 +12,6 @@ export const weatherAPI = {
     },
     getCityWeather(lat: number, lon: number) {
         return instance.get<AxiosResponse, AxiosResponse>
-        (`data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=daily&appid=${API_KEY}`);
+        (`data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=daily&appid=${API_KEY}`);
     }
 }

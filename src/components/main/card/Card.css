@@ -1,7 +1,73 @@
-.Card{
+.card {
     margin: 20px 0;
 }
 
-.Paper{
+.card:first-of-type {
+    margin-top: 160px;
+}
+
+.paper {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
+}
+
+.main {
+    display: inherit;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main img {
+    width: 50px;
+    height: 50px;
+}
+
+.left-side {
+    display: inherit;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.left-side div {
+    display: inherit;
+    flex-direction: column;
+}
+
+.right-side {
+    display: inherit;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.right-side span {
+    text-align: right;
+}
+
+.actions {
+    display: inherit;
+    justify-content: flex-end;
+}
+
+@media (max-width: 660px) {
+    .main {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .right-side {
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .right-side span{
+        margin-top: 10px;
+        text-align: left;
+    }
+
+    .actions {
+        justify-content: flex-start;
+        margin-top: 20px;
+    }
 }
