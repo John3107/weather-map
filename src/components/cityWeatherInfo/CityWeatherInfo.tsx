@@ -24,6 +24,7 @@ const CityWeatherInfo = () => {
                         <span style={{fontSize: '30px'}}>{data.selectedCity.temp}C°</span>
                     </div>
                     <span>{data.selectedCity.description}</span>
+                    <div>{data.selectedCity.name}, {data.selectedCity.country}</div>
                 </div>
                 <div className="body">
                     <div className="side">
