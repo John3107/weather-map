@@ -16,6 +16,7 @@
     display: inherit;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .main img {
@@ -61,7 +62,7 @@
         margin-top: 20px;
     }
 
-    .right-side span{
+    .right-side span {
         margin-top: 10px;
         text-align: left;
     }

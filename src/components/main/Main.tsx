@@ -28,7 +28,7 @@ const Main = () => {
 
     return (
         <div>
-            <div className="Add">
+            <div className="add">
                 <div className="input">
                     <TextField className="textField"
                                label="Enter city name"

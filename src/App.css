@@ -1,4 +1,4 @@
 .App {
     display: flex;
-    margin: 10% 30%;
+    justify-content: center;
 }

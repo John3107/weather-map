@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
 
-const API_KEY = '377ce11549296fe8c443ac6fc8998137'
+const API_KEY = '46f02c10d6e9bd84661beaf69cf67446'
 
 const instance = axios.create({
     baseURL: 'https://api.openweathermap.org/'
