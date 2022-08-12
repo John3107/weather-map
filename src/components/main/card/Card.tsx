@@ -38,8 +38,8 @@ const Card = (props: CityWeatherType) => {
 
     const toInfo = () => {
         dispatch(selectedCityTC(props))
-        navigate(`${name}`)
-        return <Navigate to={`${name}`}/> && <CityWeatherInfo/>
+        navigate(`/city/${name}`)
+        return <Navigate to={`/city/${name}`}/> && <CityWeatherInfo/>
     }
 
     return (

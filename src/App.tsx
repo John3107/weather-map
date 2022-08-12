@@ -25,7 +25,7 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path="/*" element={<Main/>}/>
-                <Route path="/:city" element={<CityWeatherInfo/>}/>
+                <Route path="/city/:map" element={<CityWeatherInfo/>}/>
             </Routes>
         </div>
     );
