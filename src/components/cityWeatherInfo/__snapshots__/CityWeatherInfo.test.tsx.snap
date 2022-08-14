@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly snapshot 1`] = `
+<div
+  className="cityInfo"
+>
+  <div
+    className="date"
+  />
+  <div
+    className="MuiPaper-root paperMain MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="head"
+    >
+      <span
+        className="currentWeather"
+      >
+        current weather
+      </span>
+      <div
+        className="main"
+      >
+        <img
+          alt=""
+          src="http://openweathermap.org/img/wn/@2x.png"
+        />
+        <span
+          style={
+            Object {
+              "fontSize": "30px",
+            }
+          }
+        >
+          0
+          C°
+        </span>
+      </div>
+      <span />
+      <div>
+        , 
+      </div>
+    </div>
+    <div
+      className="body"
+    >
+      <div
+        className="side"
+      >
+        <div
+          className="param"
+        >
+          <span>
+            Wind
+          </span>
+          <span>
+            0
+             m/s
+          </span>
+        </div>
+        <div
+          className="param"
+        >
+          <span>
+            Wind degree
+          </span>
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            style={
+              Object {
+                "transform": "rotate(0deg)",
+              }
+            }
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+            />
+          </svg>
+        </div>
+        <div
+          className="param"
+        >
+          <span>
+            Humidity
+          </span>
+          <span>
+            0
+            %
+          </span>
+        </div>
+      </div>
+      <div
+        className="side"
+      >
+        <div
+          className="param"
+        >
+          <span>
+            Dew Point
+          </span>
+          <span>
+            0
+            C°
+          </span>
+        </div>
+        <div
+          className="param"
+        >
+          <span>
+            Pressure
+          </span>
+          <span>
+            0
+             mb
+          </span>
+        </div>
+        <div
+          className="param"
+        >
+          <span>
+            Cloud Cover
+          </span>
+          <span>
+            0
+            %
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
