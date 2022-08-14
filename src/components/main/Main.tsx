@@ -4,10 +4,14 @@ import {TextField} from "@material-ui/core";
 import Card from "./card/Card";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 import {addCityTC, citiesContextTC} from "../../bll/app-reducer";
-import {CityType} from "../../types/types";
+import {CityType, CityWeatherType} from "../../types/types";
 import {Clear} from '@material-ui/icons';
 
-const Main = () => {
+type PropsType = {
+    toInfo?: (data: CityWeatherType, name: string) => void
+}
+
+const Main = ({toInfo}: PropsType) => {
 
     const data = useAppSelector()
     const dispatch = useAppDispatch()
@@ -56,7 +60,7 @@ const Main = () => {
                 </div>
             </div>
             <div className="Cards">{
-                data.cities.map((el) => <Card {...el} key={el.id}/>)
+                data.cities.map((el) => <Card prop={el} key={el.id} toInfo={() => toInfo && toInfo(el, el.name)}/>)
             }</div>
         </div>
     );

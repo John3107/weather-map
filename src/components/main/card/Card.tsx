@@ -8,17 +8,19 @@ import {useAppDispatch, useAppSelector} from "../../../hooks/hooks";
 import {
     deleteCardTC,
     refreshCityTC,
-    selectedCityTC,
     setDeletedCardAC
 } from "../../../bll/app-reducer";
-import {Navigate, useNavigate} from "react-router-dom";
-import CityWeatherInfo from "../../cityWeatherInfo/CityWeatherInfo";
 
-const Card = (props: CityWeatherType) => {
+type PropsType = {
+    prop: CityWeatherType,
+    toInfo?: () => void
+}
+
+const Card = (props: PropsType) => {
     const data = useAppSelector()
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
-    const {name, country, temp, description, icon, id, lon, lat} = props
+    const {prop, toInfo} = props
+    const {name, country, temp, description, icon, id, lon, lat} = prop
     const [date, setDate] = useState('')
 
     useEffect(() => {
@@ -34,12 +36,6 @@ const Card = (props: CityWeatherType) => {
     const refreshDataHandler = () => {
         setDate(String(new Date()).split('GMT')[0])
         dispatch(refreshCityTC({name, country, lon, lat}))
-    }
-
-    const toInfo = () => {
-        dispatch(selectedCityTC(props))
-        navigate(`/city/${name}`)
-        return <Navigate to={`/city/${name}`}/> && <CityWeatherInfo/>
     }
 
     return (
